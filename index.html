@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <h1 id="title">Satisfaction Review</h1>
+    <p id="description">Thank you for choosing to spend your time with us. Your satisfaction and comfort are our top priorities, and we’re committed to providing you with an exceptional experience. To help us tailor our services to your needs and preferences, we kindly ask you to take a few moments to complete this short survey. Your feedback is invaluable and will help us ensure your visit is nothing short of perfect. </p>
+      <form id="survey-form">
+        <label id="name-label" for="name">Name <input name="name" class="input" id="name" type="text" placeholder="Enter your name" required/></label>
+        <label id="email-label" for="email">Email <input name="email" class="input" id="email" type="email" placeholder="Enter your email" required/></label>
+        <label id="number-label" for="age">Age (Optional)<input name="age" class="input" id="number" type="number" min="18" max="101" placeholder="Age"/></label>
+        <label id="dropdown-label">Which Wellness Specialist you are visiting today?
+          <select class="input" id="dropdown">
+            <option value="">(select one)</option>
+            <option value="1">Maya</option>
+            <option value="2">Priya</option>
+            <option value="3">Lisa</option>
+          </select>
+        </label>
+<section class="ambience">
+        <legend>What ambiance do you find most soothing for your spa experience?</legend>
+          <label><input id="serene" type="radio" name="experience" value="serene" checked/>A serene, tranquil environment</label>
+          <label><input id="calming" type="radio" name="experience" value="calming" />A calming atmosphere with subtle background music</label>
+</section>
+<section class="aromas">
+        <legend>During your treatment, are there any particular scents or aromas that you find most appealing? We would be delighted to tailor the essential oils for your experience based on your preferences.</legend>
+          <input id="lavendar" type="checkbox" name="lavendar" value="lavendar" checked> <label for="lavendar">Lavendar</label>
+          <input id="eucalyptus" type="checkbox" name="eucalyptus" value="eucalyptus" > <label for="eucalyptus">Eucalyptus</label>           
+          <input id="peppermint" type="checkbox" name="peppermint" value="peppermint" > <label for="peppermint">Peppermint</label>
+          <input id="chamomile" type="checkbox" name="chamomile" value="chamomile" > <label for="chamomile">Chamomile</label>
+          <input id="orange" type="checkbox" name="orange" value="orange" > <label for="orange">Sweet Orange</label>
+</section>         
+           <label class="input" for="notes">Are there any important details or considerations we should be aware of to ensure your treatment is tailored to your needs?
+          <textarea class="input" id="notes" name="notes" rows="3" cols="30" placeholder="Please provide that information here..."></textarea>
+           <input id="submit" type="submit" value="Submit" />
+  </body>
+<footer>
+</footer>
