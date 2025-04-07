@@ -1,0 +1,154 @@
+
+.red-hat-display-<uniquifier> {
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+body {
+  background: #08090D
+}
+
+.text {
+  text-align: center;
+  font-family: "Red Hat Display";
+  font-weight: 700;
+  color: white;
+  background: #383249;
+  padding: 0.5%;
+  border-radius: 20px;
+  margin: 7px 0px;
+  letter-spacing: 1px;
+}
+
+.container {
+  font-family: "Red Hat Display";
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px; /* ADD gap for spacing between grid items */
+  padding: 7px; /* Optional: Add padding around the whole grid */
+  max-width: 1800px; /* Optional: Limit max width on desktop */
+  margin: 15px auto; /* Optional: Center container and add top/bottom margin */
+}
+
+.grid-span-1 {
+  grid-column: span 1;
+}
+
+.grid-span-2 {
+  grid-column: span 2;
+}
+
+.grid-span-3 {
+  grid-column: span 3;
+  align-items: center;
+}
+
+.section {
+  display: flex;           /* Make it a flex container */
+  flex-direction: column;  /* Stack image and caption vertically */
+  align-items: center;     /* Center items horizontally */
+  justify-content: center;
+  /* text-align: center; might still be needed for the caption text itself if h3 isn't centered by default */
+}
+
+.section-box { /* Create a common class for .one, .two, .three */
+  text-align: center;
+  /* font-family: "Red Hat Display"; */ /* Inherited from body/container */
+  font-weight: 350;
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  /* margin: 7px 0px; */ /* REMOVED - Use grid gap instead */
+  letter-spacing: 1px;
+
+  /* Add flex for vertical centering within the box */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px; /* Optional: Give them some minimum height */
+}
+
+#img-div {
+  padding: 15px;
+  box-sizing: border-box; 
+  width: 100%;
+  background-color: #35364D;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border-radius: 20px; /* Outer container radius */
+  margin: 7px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+#image {
+  width: 100%;        /* Fill the available width inside the padding */
+  max-width: 100%;    /* Ensure it doesn't overflow */
+  border-radius: 15px; /* Example: Slightly smaller or equal to parent's radius *//* Adjust as needed based on desired look and padding amount */
+  height: auto;
+  display: block;
+}
+
+.one {
+  background: #252130;
+  /* padding: 0.5px; */ /* Use consistent padding via .section-box */
+  grid-column: span 3; /* Apply grid span here */
+}
+.two {
+  background: #161c30;
+  grid-column: span 2; /* Apply grid span here */
+}
+
+.three {
+  background: #35364D;
+  /* margin-left: 12px; */ /* REMOVED - Use grid gap instead */
+  grid-column: span 1; /* Apply grid span here */
+}
+
+a {
+  color: white; 
+}
+
+p {
+  font-size: 16px;
+  margin: 0;
+}
+
+@media (max-width: 768px) { /* Target screens 768px wide or smaller */
+
+  .container {
+    grid-template-columns: 1fr; /* Change to a single column */
+    /* Gap still applies vertically */
+  }
+
+  /* Reset grid spans so each item takes one full row */
+  .grid-span-1,
+  .grid-span-2,
+  .grid-span-3 {
+    grid-column: span 1; /* Or grid-column: auto; */
+  }
+
+  /* You might want less padding on mobile */
+  .container {
+    padding: 7px 10px; /* Adjust container padding */
+  }
+
+  .section-box {
+     padding: 10px; /* Adjust item padding */
+  }
+
+  .text { /* Adjust title padding on mobile */
+    padding: 10px 15px;
+    font-size: 1.2em; /* Example: slightly smaller font */
+  }
+
+  #img-div { /* Adjust image container padding on mobile */
+    padding: 10px;
+    font-size: 16px;
+  }
+}

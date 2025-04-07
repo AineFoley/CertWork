@@ -1,0 +1,43 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background: #000000;
+}
+
+#nav-bar {
+    display: flex;
+    flex-direction: row;
+    position: fixed; /* Fix the navbar to the top */
+    top: 0; /* Position it at the top of the viewport */
+    width: 100%; /* Make it span the full width */
+    background-color: #000000; /* Add a background color */
+    z-index: 1000; /* Ensure it stays above other content */
+    padding: 1rem; /* Add some padding */
+  }
+  
+  /* Style the navbar list */
+  #nav-bar ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display list items horizontally */
+    justify-content: center; /* Center the links */
+  }
+  
+  /* Style the navbar links */
+  #nav-bar .nav-link {
+    color: white; /* Link text color */
+    text-decoration: none; /* Remove underline */
+    padding: 0.5rem 1rem; /* Add padding around links */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  #nav-bar .nav-link:hover {
+    background-color: #371c05; /* Background color on hover */
+  }
+
+#header-img {
+  width: 100%;
+  height: 700px; /* Sets the height of the image*/
+  object-fit: cover; /* Fits the image inside of the space provided */
+}

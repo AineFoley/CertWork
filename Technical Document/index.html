@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tech Doc</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <nav id="navbar">
+            <header>Menu</header>
+            <a class="nav-link" href="#selectors">CSS Selectors</a>
+            <a class="nav-link" href="#box-model">CSS Box Model</a>
+            <a class="nav-link" href="#flexbox">Flexbox Layout</a>
+            <a class="nav-link" href="#specificity">CSS Specificity</a>
+            <a class="nav-link" href="#variables">CSS Variables</a>
+        </nav>
+
+        <section id="selectors" class="main-section">
+            <header>CSS Selectors</header>
+            <p>Selectors are patterns used to select the HTML element(s) you want to style. Understanding how to target elements precisely is fundamental to CSS.</p>
+            <ul>
+                <li>Selectors define which elements a set of CSS rules applies to.</li>
+                <li>Common selector types include Type (e.g., h1), Class (e.g., .button), ID (e.g., #main-nav), Attribute (e.g., [type="submit"]), and Pseudo-classes (e.g., :hover).</li>
+                <li>Combinators (, >, +, ~) allow you to specify relationships between selected elements (e.g., descendant, child, adjacent sibling, general sibling).</li>
+                <li>Pseudo-classes select elements based on their state (like :hover, :focus, :nth-child()) or characteristics.</li>
+                <li>Pseudo-elements (like ::before, ::after, ::first-line) allow you to style specific parts of a selected element's content.</li>
+                <code><html lang="en">
+                    /* Example combining type, class, and pseudo-class selectors */
+                    article.featured p:first-child {
+                    font-weight: bold;
+                    color: #333;
+                    }
+
+                    /* Select an element by ID */
+                    #user-profile {
+                    border: 1px solid #ccc;
+                    }
+                </code>
+            </ul>
+        </section>
+
+        <section id="box-model" class="main-section">
+            <header>The CSS Box Model</header>
+            <p>Every HTML element can be considered a rectangular box. The CSS Box Model describes how this box's size, padding, border, and margin are calculated and rendered.</p>
+            <ul>
+                <li>The model consists of four concentric layers: Content, Padding, Border, and Margin.</li>
+                <li>By default (box-sizing: content-box;), the width and height properties apply only to the content area. Padding and border are added outside this dimension.</li>
+                <li>Setting box-sizing: border-box; changes this behavior: width and height now include the content, padding, and border areas. This often makes layout calculations more intuitive.</li>
+                <li>Margins are used to create space around elements. Vertical margins between adjacent block elements can sometimes collapse into a single margin.</li>
+                <li>Padding creates space within an element, between the content and the border. It inherits the background of the element itself.</li>
+                <code><html lang="en">
+                    /* Applying border-box sizing globally is a common practice */
+                    *,
+                    *::before,
+                    *::after {
+                    box-sizing: border-box;
+                    }
+
+                    .card {
+                    width: 300px; /* Includes padding and border */
+                    padding: 20px;
+                    border: 2px solid blue;
+                    margin: 15px;
+                    background-color: lightblue;
+                    }
+                </code>
+            </ul>
+        </section>
+
+        <section id="flexbox" class="main-section">
+            <header>Flexbox Layout Module</header>
+            <p>The Flexible Box Layout Module (Flexbox) is a one-dimensional layout model designed to provide a more efficient way to distribute space and align items within a container, even when their size is unknown or dynamic.
+            </p>
+            <ul>
+                <li>Flexbox operates along two axes: the main axis and the cross axis. Their direction is determined by the flex-direction property (default is row).</li>
+                <li>To enable Flexbox, set the display property of the parent container element to flex or inline-flex.</li>
+                <li>Container properties like justify-content control item alignment along the main axis, while align-items controls alignment along the cross axis.</li>
+                <li>Item properties like flex-grow, flex-shrink, and flex-basis control how individual flex items behave regarding sizing and available space.</li>
+                <li>Flexbox is ideal for components like navigation bars, form layouts, card grids, and centering content both horizontally and vertically within a container.</li>
+                <code><html lang="en">
+                    /* A simple flex container centering its items */
+                    .flex-container {
+                      display: flex;
+                      justify-content: center; /* Center horizontally (in default row direction) */
+                      align-items: center;     /* Center vertically */
+                      min-height: 200px;
+                      background-color: #eee;
+                      border: 1px dashed grey;
+                    }
+                    
+                    .flex-item {
+                      padding: 10px;
+                      background-color: dodgerblue;
+                      color: white;
+                      margin: 5px; /* Add some space between items */
+                    }
+                </code>
+            </ul>
+        </section>
+
+        <section id="specificity" class="main-section">
+            <header>CSS Specificity</header>
+            <p>Specificity is the algorithm browsers use to determine which CSS rule applies if multiple rules targeting the same element define the same property. It's a weighting system based on selector types.</p>
+            <ul>
+                <li>Specificity is the algorithm browsers use to determine which CSS rule applies if multiple rules targeting the same element define the same property. It's a weighting system based on selector types.</li>
+                <li>The hierarchy (from highest to lowest specificity) is generally: Inline styles > IDs > Classes/Attributes/Pseudo-classes > Elements/Pseudo-elements.</li>
+                <li>Specificity is often calculated as a three or four-part value (e.g., 0,1,2,1 representing IDs, Classes/Attributes/Pseudo-classes, Elements/Pseudo-elements, respectively - inline styles are often considered separately). The higher value wins.</li>
+                <li>The !important declaration overrides any other declaration, regardless of specificity. Use it sparingly as it can make debugging difficult.</li>
+                <li>If two selectors have the exact same specificity, the rule that appears later in the CSS source order takes precedence.</li>
+                <code><html lang="en">
+                    /* Specificity Example */
+                    #main-content p {
+                      color: blue; /* Specificity: 1 ID, 1 Element (e.g., 0,1,0,1) */
+                    }
+                    
+                    article .text-highlight {
+                      color: red;  /* Specificity: 1 Class, 1 Element (e.g., 0,0,1,1) */
+                    }
+                    
+                    p {
+                      color: black; /* Specificity: 1 Element (e.g., 0,0,0,1) - Least specific */
+                    }
+                    
+                    /* In this case, #main-content p wins due to the ID's higher specificity. */
+</code>
+            </ul>
+        </section>
+
+        <section id="variables" class="main-section">
+            <header>CSS Variables (Custom Properties)</header>
+            <p>CSS Custom Properties allow you to define reusable values (like colors, font sizes, spacing) in one place and reference them throughout your CSS, improving maintainability and enabling dynamic theming.</p>
+            <ul>
+                <li>Custom properties are defined using a name prefixed with two hyphens (--) and are case-sensitive (e.g., --primary-color).</li>
+                <li>They are accessed using the var() function (e.g., color: var(--primary-color);).</li>
+                <li>Custom properties cascade and inherit like standard CSS properties. They are commonly defined on the :root pseudo-class to make them globally available.</li>
+                <li>They are highly useful for theming (e.g., light/dark mode), maintaining consistent spacing/sizing, and reducing repetition in stylesheets.</li>
+                <li>Unlike preprocessor variables (like Sass or Less), CSS Custom Properties are live variables accessible and manipulable by the browser and JavaScript at runtime.</li>
+                <code><html lang="en">/* Define global custom properties */
+                    :root {
+                      --primary-color: #007bff;
+                      --secondary-color: #6c757d;
+                      --base-font-size: 16px;
+                      --spacing-unit: 8px;
+                    }
+                    
+                    /* Use the custom properties */
+                    body {
+                      font-size: var(--base-font-size);
+                      color: var(--secondary-color);
+                    }
+                    
+                    .button-primary {
+                      background-color: var(--primary-color);
+                      color: white;
+                      padding: var(--spacing-unit) calc(var(--spacing-unit) * 2); /* Use calc() with vars */
+                      border: none;
+                      border-radius: 4px;
+                    }</code>
+            </ul>
+        </section>
+
+    </body>
+</html>

@@ -1,0 +1,151 @@
+/* styles.css */
+
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Use border-box for easier sizing */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/* Define Layout Variables */
+:root {
+    --navbar-width: 20%;
+    --navbar-min-width: 250px; /* Minimum width for readability */
+    --content-padding: 30px;
+    --navbar-bg: #1e1e1e;
+    --navbar-border-color: #ffffff;
+    --link-color: #ffffff;
+    --link-hover-bg: #373737;
+    --code-bg: #282828;
+    --code-border: none;
+}
+
+/* Navbar Styling */
+#navbar {
+    position: fixed; /* Fix the navbar to the viewport */
+    top: 0;
+    left: 0;
+    width: var(--navbar-width);
+    min-width: var(--navbar-min-width); /* Prevent it from getting too narrow */
+    height: 100vh; /* Full viewport height */
+    background-color: var(--navbar-bg);
+    border-right: 1px solid var(--navbar-border-color);
+    padding: 20px;
+    overflow-y: auto; /* Add scrollbar if content overflows */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+#navbar header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--navbar-border-color);
+}
+
+#navbar .nav-link {
+    display: block; /* Make links take full width */
+    padding: 10px 0;
+    margin-bottom: 5px;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #eee; /* Subtle separator for links */
+}
+#navbar .nav-link:last-child {
+    border-bottom: none; /* Remove border from last link */
+}
+
+#navbar .nav-link:hover {
+    background-color: var(--link-hover-bg);
+    border-radius: 4px;
+    padding-left: 5px; /* Slight indent on hover */
+}
+
+
+/* Main Content Area Styling */
+/*
+   We apply margin-left to each main section to push it
+   to the right of the fixed navbar.
+*/
+.main-section {
+    /* Calculate margin based on navbar width and its min-width */
+    margin-left: max(var(--navbar-width), var(--navbar-min-width));
+    padding: var(--content-padding);
+    padding-top: 20px; /* Add some space from the top */
+}
+
+.main-section header {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.main-section p {
+    margin-bottom: 1em;
+}
+
+.main-section ul {
+    margin-left: 25px; /* Indent lists */
+    margin-bottom: 1em;
+}
+
+.main-section li {
+    margin-bottom: 0.6em;
+}
+
+.main-section code {
+    display: block; /* Make code take full width */
+    background-color: var(--code-bg);
+    padding: 15px;
+    margin: 1em 0;
+    border-radius: 4px;
+    border: 1px solid var(--code-border);
+    white-space: pre-wrap; /* Preserve formatting but allow wrapping */
+    word-wrap: break-word; /* Break long lines */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    border-radius: 15px;
+    /* The <html lang="en"> tag inside <code> is unusual, but this styles the block */
+}
+
+
+/* Responsive Design: Stack layout on smaller screens */
+@media (max-width: 768px) {
+    #navbar {
+        position: static; /* Remove fixed positioning */
+        width: 100%;     /* Take full width */
+        min-width: unset; /* Remove min-width */
+        height: auto;     /* Height adjusts to content */
+        border-right: none; /* Remove side border */
+        border-bottom: 1px solid var(--navbar-border-color); /* Add bottom border */
+        max-height: 300px; /* Limit height and allow scrolling if needed */
+        overflow-y: auto;
+    }
+
+    .main-section {
+        margin-left: 0; /* Remove the left margin */
+        padding-left: var(--content-padding); /* Keep consistent padding */
+        padding-right: var(--content-padding);
+    }
+
+    #navbar header {
+        text-align: center;
+    }
+
+    #navbar .nav-link {
+         text-align: center;
+         border-bottom: 1px dotted #ccc;
+    }
+     #navbar .nav-link:last-child {
+        border-bottom: 1px dotted #ccc; /* Re-add border for consistency in stacked view */
+    }
+}
