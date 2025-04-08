@@ -1,0 +1,55 @@
+.codystar-regular {
+    font-family: "Codystar", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  
+.red-hat-display-<uniquifier> {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+
+html {
+    background-color: #131313;
+    color: white;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+h1 {
+    font-family: "Codystar", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    letter-spacing: 5px;
+}
+
+#nav-bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    font-weight: 200;
+}
+
+#nav-bar .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+#nav-bar .nav-link:hover {
+    color: #aaa;
+}
+
+#welcome-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    text-align: center;
+}
